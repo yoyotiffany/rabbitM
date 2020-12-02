@@ -1,0 +1,38 @@
+server:
+  port: 1006
+spring:
+  application:
+    name: csg-car-apply-yq
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+  redis:
+    database: 4
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password:
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:127.0.0.1}
+    port:  ${RABBIT_MQ_PORT:5672}
+    username: guest
+    password: guest
+    virtual-host: /
+    cache:
+      channel:
+        size: 100
+# 配置swagger
+swagger:
+  enabled: true
+  base-package: com.coolmq.amqp
+  title: Admin Back
+  version: 1.0.0.SNAPSHOT
+  description: apply 后端服务
+  contact:
+    name: csg-car-apply
+  global-operation-parameters:
+  - parameterType: header
+    name: Authorization
+    required: false
+    description: 头部信息
+    modelRef: String
